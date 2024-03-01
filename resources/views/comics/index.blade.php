@@ -19,8 +19,20 @@
                   <p class="card-text">{{ $comic->decription }}</p>
                   <p class="card-text">{{ $comic->price }}</p>
                   <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary">Go comics</a>
+                  <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="btn btn-primary">Fix comics</a>
                 </div>
               </div>
+              <form
+                                onsubmit="return confirm('Do you  want delete this comic?');"
+                                class="d-inline-block"
+                                action="{{ route('comics.destroy', ['comic' => $comic->id]) }}"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </form>
             @endforeach
             
 

@@ -4,6 +4,6 @@
 
 @section('main-content')
  <div>
-    main
+   
  </div>
 @endsection

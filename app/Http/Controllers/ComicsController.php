@@ -36,7 +36,7 @@ class ComicsController extends Controller
         
         $comicsData= $request->all();
 
-        // TODO: valido i dati, ma lo faremo in futuro
+
         $comic = new Comic();
             $comic->title = $comicsData['title'];
             $comic->description = $comicsData['description'];
@@ -50,6 +50,23 @@ class ComicsController extends Controller
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
+    public function edit(Comic $pasta)
+    {
+        return view('comics.edit', compact('comic'));
+    }
+    public function update(Request $request, Comic $comic)
+    {
+        $comicsData = $request->all();
 
+        $comic->update($comicsData);
+
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
+    }
+    public function destroy(Comic $comic)
+    {
+        $comic->delete();
+
+        return redirect()->route('comics.index');
+    }
 
 }
