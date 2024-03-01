@@ -6,6 +6,6 @@ use App\Http\Controllers\ComicsController;
 
     Route::get('/', function(){
         
-        return view('welcome');
+        return view('comics.index');
     });
     Route::resource('comics', ComicsController::class);
